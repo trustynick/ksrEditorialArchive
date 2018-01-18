@@ -31,6 +31,11 @@ if(c ===0){
 //text(table.getString(r, 1), 10, 20+20*r);
 //createA(table.getString(r, 1), table.getString(r, 0));
 
+noStroke();
+fill(random(255));
+ellipse(30+c*100,110+r*30, 15);
+fill(random(255));
+ellipse(30+c*100,110+r*30, 7);
 link = createA(table.getString(r, 1), "<div style='color:black; font-family: sans-serif;'>"+table.getString(r, 0)+ "</div>", "_blank");
 link.position(50+c*100,100+r*30);
 }
