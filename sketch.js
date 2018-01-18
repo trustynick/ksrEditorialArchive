@@ -18,8 +18,12 @@ function preload() {
   //and has a header specifying the columns labels
   //table = loadTable('data/ksrea.csv', 'csv', 'header');
   //the file can be remote
-  table = loadTable("https://docs.google.com/spreadsheets/d/e/2PACX-1vRp9CDCJKJvPug_GcCjOf2YmDlh57-M6dh3DdhfKyYEqOSunPLGYFTuqV2UoHLRFwgkmcMX_wy3aKiz/pub?output=csv", "csv", "header");
+  //test
+  //table = loadTable("https://docs.google.com/spreadsheets/d/e/2PACX-1vRp9CDCJKJvPug_GcCjOf2YmDlh57-M6dh3DdhfKyYEqOSunPLGYFTuqV2UoHLRFwgkmcMX_wy3aKiz/pub?output=csv", "csv", "header");
+//full
+table = loadTable("https://docs.google.com/spreadsheets/d/e/2PACX-1vRi9ipGYonyrz7R0K9qGxOrchoK7RomUaHX84ycaoauhNKyGqNLZ2zb2pSFpLRwh5JS4P6O53dMxm2j/pub?output=csv", "csv", "header");
 }
+
 
 function setup() {
   var cnv =createCanvas(windowWidth, windowHeight *10);
