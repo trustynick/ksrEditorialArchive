@@ -16,7 +16,7 @@ function preload() {
 }
 
 function setup() {
-  var cnv =createCanvas(1000, 1000);
+  var cnv =createCanvas(1000, windowWidth);
   //var cnvX=(windowWidth - width) / 2;
   //var cnvY=(windowHeight - height) / 2;
   //cnv.position(cnvX,cnvY);
