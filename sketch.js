@@ -23,11 +23,11 @@ function setup() {
 
 textSize(12);
 if(c ===0){
-var textColorButton;
-textColorButton = createButton(table.getString(r, 0));
-textColorButton.position(10, 10+20*r);
-//textColorButton.mousePressed(openlink(r));
-textColorButton.mousePressed(openlink(table.getString(r, 1)));
+var titleButton;
+titleButton = createButton(table.getString(r, 0));
+titleButton.position(10, 10+20*r);
+titleButton.mousePressed(openlink(r));
+//titleButton.mousePressed(openlink(table.getString(r, 1)));
 
 fill(255,0,0);
 //text(table.getString(r, 1), 10, 20+20*r);
