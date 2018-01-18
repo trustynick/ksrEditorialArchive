@@ -1,6 +1,11 @@
 var table;
 
 var section = "Design & Tech";
+var articles = [];
+var titleOS = 20;
+var vSpacing = 20;
+var topPadding = 200;
+
 
 function preload() {
   //my table is comma separated value "csv"
@@ -11,38 +16,113 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(1000, 1000);
-  //count the columns
-  print(table.getRowCount() + ' total rows in table');
-  print(table.getColumnCount() + ' total columns in table');
+  var cnv =createCanvas(1000, 1000);
+  //var cnvX=(windowWidth - width) / 2;
+  //var cnvY=(windowHeight - height) / 2;
+  //cnv.position(cnvX,cnvY);
 
-  print(table.getColumn('name'));
+  background(240);
+  cnv.parent('sketch-holder');
+  //count the columns
+  // print(table.getRowCount() + ' total rows in table');
+  // print(table.getColumnCount() + ' total columns in table');
+  //print(table.getColumn('name'));
 
   //cycle through the table
-  for (var r = 0; r < table.getRowCount(); r++)
+  for (var r = 0; r < table.getRowCount(); r++){
     for (var c = 0; c < table.getColumnCount(); c++) {
-      print(table.getString(r, c));
-
-textSize(12);
-if(c ===0){
-  //if(c ===0 && table.getString(r, c+3) == section){
-
-//fill(255,0,0);
-//text(table.getString(r, 1), 10, 20+20*r);
-//createA(table.getString(r, 1), table.getString(r, 0));
-
-noStroke();
-fill(random(255));
-ellipse(30+c*100,110+r*30, 15);
-fill(random(255));
-ellipse(30+c*100,110+r*30, 7);
-link = createA(table.getString(r, 1), "<div style='color:black; font-family: sans-serif;'>"+table.getString(r, 0)+ "</div>", "_blank");
-link.position(50+c*100,100+r*30);
-}
+      //print(table.getString(r, c));
 
 
+switch(c) {
+    case 0:
+    {
+    articles.push(new Article(c,r));
+      articles[r].title = table.getString(r, c);
     }
+        break;
+    case 1:
+    {
+    articles[r].link = table.getString(r, c);
+    articles[r].createLink();
+    //print(articles[r].link);
+    }
+        break;
+
 }
+}
+}
+
+}
+
+function draw() {
+  background(240);
+  for(var r=0; r < articles.length; r++){
+  articles[r].display();
+  articles[r].move();
+  }
+}
+
+function mousePressed() {
+
+  for(var r=0; r < articles.length; r++){
+  articles[r].tX+=random(-10,10);
+  }
+
+}
+
+
+// article class
+function Article(_c,_r) {
+  // this.x = random(width);
+  // this.y = random(height);
+  this.x = 100;
+  this.y = 200+vSpacing*_r;
+  this.tX = this.x;
+  this.tY = this.y;
+  this.dotCol = color(3, 71, 82,random(50,255));
+  this.diameter = random(5, 10);
+  this.speed = 1;
+  this.title;
+  this.link;
+  this.category;
+  this.section;
+  this.date;
+  this.day;
+  this.month;
+  this.year;
+  this.tLink;
+
+  this.createLink=function(){
+     this.tLink = createA(this.link, "<div style='color:black; font-family: sans-serif;'>"+this.title+ "</div>", "_blank");
+  };
+
+
+  this.move = function() {
+    if(this.x>this.tX){
+      this.x-=this.speed;
+    }
+    if(this.y>this.tY){
+      this.y-=this.speed;
+    }
+    if(this.x<this.tX){
+      this.x+=this.speed;
+    }
+    if(this.y<this.tY){
+      this.y+=this.speed;
+    }
+  };
+
+  this.display = function() {
+    noStroke();
+    fill(this.dotCol);
+    ellipse(this.x,this.y+6, this.diameter);
+    this.tLink.position(this.x+titleOS,this.y+topPadding);
+
+  }
+
+};
+
 
 // function openlink(_r){
 //   var link = table.getString(_r,1);
