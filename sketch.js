@@ -1,5 +1,4 @@
 var table;
-
 var section = "Design & Tech";
 var articles = [];
 var titleOS = 20;
@@ -16,7 +15,7 @@ function preload() {
 }
 
 function setup() {
-  var cnv =createCanvas(1000, windowWidth);
+  var cnv =createCanvas(windowWidth, windowHeight);
   //var cnvX=(windowWidth - width) / 2;
   //var cnvY=(windowHeight - height) / 2;
   //cnv.position(cnvX,cnvY);
@@ -82,12 +81,12 @@ function Article(_c,_r) {
   this.tY = this.y;
   this.dotCol = color(3, 71, 82,random(50,255));
   this.diameter = random(5, 10);
-  this.speed = 1;
-  this.title;
-  this.link;
-  this.category;
-  this.section;
-  this.date;
+  this.speed = .5;
+  this.title; //0
+  this.link; //1
+  this.category; //2
+  this.section; //3
+  this.date; //4
   this.day;
   this.month;
   this.year;
