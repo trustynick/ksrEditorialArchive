@@ -15,7 +15,6 @@ function setup() {
   print(table.getColumnCount() + ' total columns in table');
 
   print(table.getColumn('name'));
-  //["Goat", "Leopard", "Zebra"]
 
   //cycle through the table
   for (var r = 0; r < table.getRowCount(); r++)
@@ -28,7 +27,7 @@ var textColorButton;
 textColorButton = createButton(table.getString(r, 0));
 textColorButton.position(10, 10+20*r);
 //textColorButton.mousePressed(openlink(r));
-//textColorButton.mousePressed(openlink(table.getString(r, 1)));
+textColorButton.mousePressed(openlink(table.getString(r, 1)));
 
 fill(255,0,0);
 //text(table.getString(r, 1), 10, 20+20*r);
