@@ -28,6 +28,8 @@ if(c ===0){
 //fill(255,0,0);
 //text(table.getString(r, 1), 10, 20+20*r);
 //createA(table.getString(r, 1), table.getString(r, 0));
+
+//createP
 createA('https://p5js.org/examples/dom-modifying-the-dom.html', "sample text");
 }
 
@@ -35,8 +37,8 @@ createA('https://p5js.org/examples/dom-modifying-the-dom.html', "sample text");
     }
 }
 
-function openlink(_r){
-  var link = table.getString(_r,1);
-  print(link);
-  window.open(link);
-}
+// function openlink(_r){
+//   var link = table.getString(_r,1);
+//   print(link);
+//   window.open(link);
+// }
