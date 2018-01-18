@@ -1,5 +1,7 @@
 var table;
 
+var section = "Design & Tech";
+
 function preload() {
   //my table is comma separated value "csv"
   //and has a header specifying the columns labels
@@ -23,12 +25,13 @@ function setup() {
 
 textSize(12);
 if(c ===0){
+  //if(c ===0 && table.getString(r, c+3) == section){
 
 //fill(255,0,0);
 //text(table.getString(r, 1), 10, 20+20*r);
 //createA(table.getString(r, 1), table.getString(r, 0));
 
-link = createA(table.getString(r, 1), "<div style='color:darkgrey; font-family: sans-serif;'>"+table.getString(r, 0)+ "</div>", "_blank");
+link = createA(table.getString(r, 1), "<div style='color:black; font-family: sans-serif;'>"+table.getString(r, 0)+ "</div>", "_blank");
 link.position(50+c*100,100+r*30);
 }
 
