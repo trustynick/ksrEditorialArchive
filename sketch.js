@@ -23,20 +23,12 @@ function setup() {
 
 textSize(12);
 if(c ===0){
-var titleButton;
-titleButton = createButton(table.getString(r, 0));
-titleButton.position(10, 10+20*r);
-titleButton.mousePressed(openlink(r));
 //titleButton.mousePressed(openlink(table.getString(r, 1)));
 
 fill(255,0,0);
 //text(table.getString(r, 1), 10, 20+20*r);
 //createA(table.getString(r, 1), table.getString(r, 0));
-//createA('https://p5js.org/examples/dom-modifying-the-dom.html', 'link stinks');
-}
-if(c >1){
-  fill(0,255,0);
-text(table.getString(r, c), 200*c,20+20*r);
+createA('https://p5js.org/examples/dom-modifying-the-dom.html', table.getString(r, 0));
 }
 
 
