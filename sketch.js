@@ -29,7 +29,7 @@ if(c ===0){
 //text(table.getString(r, 1), 10, 20+20*r);
 //createA(table.getString(r, 1), table.getString(r, 0));
 
-createP("hi this is your pair of graphs")
+createP("hi this is your pair of graphs");
 createA('https://p5js.org/examples/dom-modifying-the-dom.html', "sample text");
 }
 
