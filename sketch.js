@@ -19,9 +19,9 @@ var displayedX = 100;
 var nondisplayedX = 600;
 var catSelX= 50;
 var catSelY= 210;
-var rbX=150;
+var rbX=180;
 var rbY=210;
-var imgX=250;
+var imgX=280;
 var imgY=10;
 var imgH=180;
 
@@ -195,7 +195,7 @@ function Select(_x,_y){
 this.x = _x;
 this.y = _y;
 this.options = [];
-this.sel = createSelect();
+this.sel = createSelect('Category');
 this.sel.changed(filterSelection);
 //this.sel = createRadio();
 this.selectedItem = "all";
