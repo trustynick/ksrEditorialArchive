@@ -297,12 +297,13 @@ function Article(_c,_r) {
 
 randomLinkGen =function(){
 
-  //selectedImg=loadImage(articles[randIndex].image);
-  selectedImg=createImg(articles[randIndex].image);
+
   //selectedImg.hide();
   randomURL=articles[randIndex].link;
   window.open(randomURL, "_blank");
   randIndex =int(random(articles.length));
+  //selectedImg=loadImage(articles[randIndex].image);
+  selectedImg=createImg(articles[randIndex].image);
   //print(randomURL);
   //return randomURL;
 }
