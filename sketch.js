@@ -17,9 +17,12 @@ var selectedImg;
 var imgArray = [];
 var imgX=300;
 var imgY=10;
-var imgH=150;
-var rbX=100;
-var rbY=200;
+var imgH=180;
+var rbX=203;
+var rbY=210;
+var catSelX= 100;
+var catSelY= 210;
+
 
 function preload() {
   //my table is comma separated value "csv"
@@ -46,7 +49,7 @@ function setup() {
   // print(table.getColumnCount() + ' total columns in table');
   //print(table.getColumn('name'));
 
-catSel = new Select(100,220);
+catSel = new Select(catSelX,catSelY);
 
   //cycle through the table
   for (var r = 0; r < table.getRowCount(); r++){
