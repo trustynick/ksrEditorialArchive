@@ -17,11 +17,11 @@ var imgArray = [];
 //layout
 var displayedX = 100;
 var nondisplayedX = 600;
-var catSelX= 100;
+var catSelX= 50;
 var catSelY= 210;
-var rbX=200;
+var rbX=150;
 var rbY=210;
-var imgX=300;
+var imgX=250;
 var imgY=10;
 var imgH=180;
 
