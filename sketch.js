@@ -4,7 +4,7 @@ var articles = [];
 var selecters = [];
 var titleOS = 20;
 var vSpacing = 20;
-var topPadding = 200;
+var topPadding = 160;
 var selSpacing = 100;
 var catSel;
 var displayedX = 100;
@@ -12,8 +12,14 @@ var nondisplayedX = 600;
 var speed = 10;
 var randomButton;
 var randomURL;
+var randomIndex;
 var selectedImg;
 var imgArray = [];
+var imgX=300;
+var imgY=10;
+var imgH=150;
+var rbX=100;
+var rbY=200;
 
 function preload() {
   //my table is comma separated value "csv"
@@ -47,6 +53,7 @@ catSel = new Select(100,220);
     for (var c = 0; c < table.getColumnCount(); c++) {
       //print(table.getString(r, c));
 
+//pull in attributes from spreadsheet csv
 switch(c) {
     case 0:
     {
@@ -77,27 +84,47 @@ switch(c) {
     break;
     }
 
+    case 4: {
+    articles[r].date = table.getString(r, c);
+//parse date here
+    break;
+    }
+
     case 5: {
     articles[r].source = table.getString(r, c);
+
     if(articles[r].source == "year"){
     articles[r].isYear=true;
     articles[r].dotCol=color(50,50,255);
     articles[r].diameter=10;
-
     }
+
+    break;
+    }
+    case 6: {
+    articles[r].image = table.getString(r, c);
+
+    break;
+    }
+
 
     break;
 
 }
 }
 }
-}
+randIndex =int(random(articles.length));
+//selectedImg=loadImage(articles[randIndex].image);
+selectedImg=createImg(articles[randIndex].image);
+//selectedImg.hide();
 randomButton();
 filterSelection();
+}
+
 
 //selectedImg = loadImage(path,successCallback,failureCallback)
 
-}
+//}
 
 function draw() {
   background(240);
@@ -108,7 +135,11 @@ function draw() {
   articles[r].move();
   }
 
-//filterSelection();
+//image(selectedImg,imgX,imgY, selectedImg.width/4,selectedImg.height/4);
+image(selectedImg,imgX,imgY, selectedImg.width*imgH/selectedImg.height,imgH);
+
+
+
 }
 
 function mousePressed(){
@@ -214,6 +245,7 @@ function Article(_c,_r) {
   this.tLink;
   this.selected = true;
   this.isYear;
+  this.image;
 
 
 
@@ -255,6 +287,9 @@ function Article(_c,_r) {
 
 randomLinkGen =function(){
   randIndex =int(random(articles.length));
+  //selectedImg=loadImage(articles[randIndex].image);
+  selectedImg=createImg(articles[randIndex].image);
+  //selectedImg.hide();
   randomURL=articles[randIndex].link;
   window.open(randomURL, "_blank");
   //print(randomURL);
@@ -262,6 +297,9 @@ randomLinkGen =function(){
 }
 randomButton = function(){
 randomButton=createButton('Random Article');
-randomButton.position(100,260);
+randomButton.position(rbX,rbY);
 randomButton.mousePressed(randomLinkGen);
+//for now let's display image in this function since it's matched to random link
+//selectedImg.position(600,100);
+
 }
