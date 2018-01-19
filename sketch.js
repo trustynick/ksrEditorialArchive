@@ -21,7 +21,7 @@ var catSelX= 50;
 var catSelY= 210;
 var rbX=180;
 var rbY=210;
-var imgX=280;
+var imgX=300;
 var imgY=10;
 var imgH=180;
 
