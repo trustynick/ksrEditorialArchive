@@ -195,7 +195,7 @@ function Select(_x,_y){
 this.x = _x;
 this.y = _y;
 this.options = [];
-this.sel = createSelect('Category');
+this.sel = createSelect();
 this.sel.changed(filterSelection);
 //this.sel = createRadio();
 this.selectedItem = "all";
