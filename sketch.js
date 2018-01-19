@@ -79,6 +79,12 @@ switch(c) {
 
     case 5: {
     articles[r].source = table.getString(r, c);
+    if(articles[r].source == "year"){
+    articles[r].isYear=true;
+    articles[r].dotCol=color(50,50,255);
+    articles[r].diameter=10;
+
+    }
 
     break;
 
@@ -127,8 +133,10 @@ for(var i=0; i<articles.length; i++){
   if(articles[i].category != catSel.selectedItem)
   {articles[i].selected=false;}
 
-  if(  articles[i].source == "year"){
+  //if(articles[i].source == "year"){
+  if(articles[i].isYear){
   articles[i].selected=true;
+  articles[i].isYear=true;
   }
 
   //print(articles[i].title+" = "+ articles[i].selected);
@@ -191,6 +199,7 @@ function Article(_c,_r) {
   this.tX = this.x;
   this.tY = this.y;
   this.dotCol = color(3, 71, 82,random(50,255));
+  this.dotOS =5;
   this.diameter = random(5, 10);
   this.speed = speed;
   this.title; //0
@@ -204,6 +213,8 @@ function Article(_c,_r) {
   this.source
   this.tLink;
   this.selected = true;
+  this.isYear;
+
 
 
   this.createLink=function(){
@@ -233,7 +244,7 @@ function Article(_c,_r) {
     noStroke();
     fill(this.dotCol);
     this.tLink.position(this.x+titleOS,this.y+topPadding);
-    ellipse(this.x,this.y+6, this.diameter);
+    ellipse(this.x,this.y+this.dotOS, this.diameter);
 
     if(this.selected){
     this.tX=displayedX;
