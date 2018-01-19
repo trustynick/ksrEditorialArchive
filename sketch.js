@@ -9,9 +9,11 @@ var selSpacing = 100;
 var catSel;
 var displayedX = 100;
 var nondisplayedX = 600;
-
 var speed = 10;
-
+var randomButton;
+var randomURL;
+var selectedImg;
+var imgArray = [];
 
 function preload() {
   //my table is comma separated value "csv"
@@ -73,42 +75,70 @@ switch(c) {
     articles[r].section = table.getString(r, c);
 
     break;
+    }
+
+    case 5: {
+    articles[r].source = table.getString(r, c);
+
+    break;
 
 }
 }
 }
 }
+randomButton();
+filterSelection();
+
+//selectedImg = loadImage(path,successCallback,failureCallback)
+
 }
 
 function draw() {
   background(240);
+  catSel.display();
+
   for(var r=0; r < articles.length; r++){
   articles[r].display();
   articles[r].move();
   }
-  catSel.display();
-filterSelection();
+
+//filterSelection();
 }
 
+function mousePressed(){
+}
 function mouseReleased() {
-  for(var r=0; r < articles.length; r++){
-  //articles[r].tX+=random(-10,10);
-  }
-  print(catSel.selectedItem);
+//randomLinkGen();
+//filterSelection();
+  //print(catSel.selectedItem);
   //print(catSel.sel.value());
 
 }
 
 
 filterSelection = function(){
+  catSel.setVal();
 for(var i=0; i<articles.length; i++){
   if(articles[i].category == catSel.selectedItem){
     articles[i].selected=true;
     //print(articles[i].title+" = "+ articles[i].selected);
   }
-  else articles[i].selected=false;
+
+  if(articles[i].category != catSel.selectedItem)
+  {articles[i].selected=false;}
+
+  if(  articles[i].source == "year"){
+  articles[i].selected=true;
+  }
+
   //print(articles[i].title+" = "+ articles[i].selected);
 }
+//sayHi();
+
+}
+
+sayHi = function(){
+  print("hi there "+random(10));
 }
 
 // selecter class
@@ -117,6 +147,8 @@ this.x = _x;
 this.y = _y;
 this.options = [];
 this.sel = createSelect();
+this.sel.changed(filterSelection);
+//this.sel = createRadio();
 this.selectedItem = "all";
 //this.sel.changed(this.mySelectEvent());
 
@@ -125,13 +157,13 @@ this.options.push("all");
 found = false;
 for(var i=0; i<this.options.length; i++){
 if(this.options[i]==_o){
-  print("already have"+_o);
+  //print("already have"+_o);
   found=true;
 }
 if(i==this.options.length-1 && found==false){
   this.options.push(_o);
   this.sel.option(_o);
-    print("added"+_o);
+    //print("added"+_o);
   }
 }
 }
@@ -139,10 +171,13 @@ if(i==this.options.length-1 && found==false){
 // this.mySelectEvent = function(){
 //
 // }
+this.setVal=function(){
+this.selectedItem = this.sel.value();
+}
 
 this.display =function(){
 this.sel.position(this.x,this.y);
-this.selectedItem = this.sel.value();
+this.setVal();
 }
 }
 
@@ -166,6 +201,7 @@ function Article(_c,_r) {
   this.day;
   this.month;
   this.year;
+  this.source
   this.tLink;
   this.selected = true;
 
@@ -206,9 +242,15 @@ function Article(_c,_r) {
   }
 };
 
-
-// function openlink(_r){
-//   var link = table.getString(_r,1);
-//   print(link);
-//   window.open(link);
-// }
+randomLinkGen =function(){
+  randIndex =int(random(articles.length));
+  randomURL=articles[randIndex].link;
+  window.open(randomURL, "_blank");
+  //print(randomURL);
+  //return randomURL;
+}
+randomButton = function(){
+randomButton=createButton('Random Article');
+randomButton.position(100,260);
+randomButton.mousePressed(randomLinkGen);
+}
