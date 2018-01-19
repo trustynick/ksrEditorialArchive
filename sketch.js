@@ -4,7 +4,7 @@ var articles = [];
 var selecters = [];
 var titleOS = 20;
 var vSpacing = 20;
-var topPadding = 160;
+var topPadding = 200;
 var selSpacing = 100;
 var catSel;
 var displayedX = 100;
