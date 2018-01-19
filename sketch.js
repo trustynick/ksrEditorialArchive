@@ -7,21 +7,25 @@ var vSpacing = 20;
 var topPadding = 200;
 var selSpacing = 100;
 var catSel;
-var displayedX = 100;
-var nondisplayedX = 600;
 var speed = 10;
 var randomButton;
 var randomURL;
 var randomIndex;
 var selectedImg;
 var imgArray = [];
+
+//layout
+var displayedX = 100;
+var nondisplayedX = 600;
+var catSelX= 100;
+var catSelY= 210;
+var rbX=200;
+var rbY=210;
 var imgX=300;
 var imgY=10;
 var imgH=180;
-var rbX=203;
-var rbY=210;
-var catSelX= 100;
-var catSelY= 210;
+
+
 
 
 function preload() {
@@ -41,6 +45,9 @@ function setup() {
   //var cnvX=(windowWidth - width) / 2;
   //var cnvY=(windowHeight - height) / 2;
   //cnv.position(cnvX,cnvY);
+
+  //imgX=windowWidth/2;
+  //rbX=windowWidth/3
 
   background(240);
   cnv.parent('sketch-holder');
